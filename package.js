@@ -1,21 +1,21 @@
 Package.describe({
   name: 'hckrs:docs',
-  summary: 'Live source code documentation tool, using jsdoc annotations.',
+  summary: 'Live Documentation generation using JSDoc source code annotations.',
   version: '1.0.0',
   git: ' /* Fill me in! */ '
 });
 
 Package.onUse(function(api) {
   api.versionsFrom('1.0');
-  // api.addFiles('jsdoc.js');
+  api.use('underscore', 'client');
 });
 
 
 Package.registerBuildPlugin({
   name: "jsdoc",
   use: [],
-  sources: ['jsdoc.js'],
+  sources: ['plugin/jsdoc.js'],
   npmDependencies: {
-    jsdoc: "3.2.2"
+    jsdoc: "3.3.0-alpha7"
   }
 })

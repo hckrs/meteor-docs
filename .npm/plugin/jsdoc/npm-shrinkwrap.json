@@ -1,86 +1,34 @@
 {
   "dependencies": {
     "jsdoc": {
-      "version": "3.2.2",
+      "version": "3.3.0-alpha7",
       "dependencies": {
         "async": {
           "version": "0.1.22"
         },
         "catharsis": {
-          "version": "0.7.0"
+          "version": "0.7.1"
         },
-        "crypto-browserify": {
-          "version": "git+https://github.com/dominictarr/crypto-browserify.git#95c5d50581ce0b4fff6e76e45dc0bb3622be4e9a"
+        "esprima": {
+          "version": "https://github.com/ariya/esprima/tarball/49a2eccb243f29bd653b11e9419241a9d726af7c"
         },
         "js2xmlparser": {
-          "version": "0.1.0"
-        },
-        "jshint": {
-          "version": "0.9.1",
-          "dependencies": {
-            "cli": {
-              "version": "0.4.3",
-              "dependencies": {
-                "glob": {
-                  "version": "4.3.1",
-                  "dependencies": {
-                    "inflight": {
-                      "version": "1.0.4",
-                      "dependencies": {
-                        "wrappy": {
-                          "version": "1.0.1"
-                        }
-                      }
-                    },
-                    "inherits": {
-                      "version": "2.0.1"
-                    },
-                    "minimatch": {
-                      "version": "2.0.1",
-                      "dependencies": {
-                        "brace-expansion": {
-                          "version": "1.0.1",
-                          "dependencies": {
-                            "balanced-match": {
-                              "version": "0.2.0"
-                            },
-                            "concat-map": {
-                              "version": "0.0.0"
-                            }
-                          }
-                        }
-                      }
-                    },
-                    "once": {
-                      "version": "1.3.1",
-                      "dependencies": {
-                        "wrappy": {
-                          "version": "1.0.1"
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-            },
-            "minimatch": {
-              "version": "0.0.5",
-              "dependencies": {
-                "lru-cache": {
-                  "version": "1.0.6"
-                }
-              }
-            }
-          }
+          "version": "0.1.5"
         },
         "marked": {
-          "version": "0.2.8"
+          "version": "0.3.2"
+        },
+        "requizzle": {
+          "version": "0.1.1"
+        },
+        "strip-json-comments": {
+          "version": "0.1.3"
         },
         "taffydb": {
-          "version": "git+https://github.com/hegemonic/taffydb.git#7d100bcee0e997ee4977e273cdce60bd8933050e"
+          "version": "https://github.com/hegemonic/taffydb/tarball/master"
         },
         "underscore": {
-          "version": "1.4.2"
+          "version": "1.6.0"
         },
         "wrench": {
           "version": "1.3.9"
