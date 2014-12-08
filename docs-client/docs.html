@@ -1,0 +1,22 @@
+<template name="docs">
+  <div id="docs">
+    <div class="docs-body">
+      <div id="nav">
+        {{> sidebar}}
+      </div>
+      <div class="main-content">
+        <div class="main">
+          {{#each docs}}
+            {{> autoApiBox this}}
+          {{/each}}
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+
+<template name="sidebar">
+  <div id="nav-inner">
+    {{> tableOfContents}}
+  </div>
+</template>

@@ -55,15 +55,15 @@ var compileJSDoc = function(compileStep) {
 // that we can use in the client application to build a documentation view.
 var makeDocSource = function(data) {
 
-  // docs to JSON
-  var jsonDataString = JSON.stringify(data.docTree);
-  var jsonNamesString = JSON.stringify(data.docNames, null, 2);
+  // Docs to JSON
+  var jsonDataString  =  JSON.stringify(data.docTree);
+  var jsonNamesString =  JSON.stringify(data.docNames, null, 2);
 
   // JSON to javascript string
-  var jsDataString = "DocsData = _.extend(this.DocsData || {}, " + jsonDataString + ");";
-  var jsNamesString = "DocsNames = (this.DocsNames || []).concat(" + jsonNamesString + ");";
+  var jsDataString    =  "Docs.addDocTree("+ jsonDataString +");\n";
+  var jsNamesString   =  "Docs.addDocNames("+ jsonNamesString +");\n";
 
-  // return doc source
+  // Doc source
   return jsNamesString + jsDataString;
 }
 
