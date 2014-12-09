@@ -33,7 +33,7 @@ Template.nav.helpers({
       return [namespace, functions]; 
     }
 
-    var namespaces = _.groupBy(Docs.getDocNames(), groupByNamespace);
+    var namespaces = _.groupBy(DocsPackage.getDocNames(), groupByNamespace);
     var toc = _.chain(namespaces).map(listNamespace).flatten(true).value();
     
     walk(['Docs', toc], 1);

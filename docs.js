@@ -1,25 +1,60 @@
-var _docTree = {}
-  , _docNames = [];
+DocsPackage = {};
 
-
-Docs = {};
-
-Docs.addDocTree = function(docTree) {
-  _.deepExtend(_docTree, docTree);
+DocsPackage.addDocTree = function(docTree) {
+  _docTree.set(_.deepExtendWithoutArrays(_docTree.get(), docTree));
 }
 
-Docs.getDocTree = function() {
-  return _docTree; 
+DocsPackage.addDocNames = function(docNames) {
+  _docNames.set(_.uniq(_docNames.get().concat(docNames)));
 }
 
-Docs.addDocNames = function(docNames) {
-  _.each(docNames, Docs.addDocName);
+DocsPackage.getDocTree = function() {
+  return _docTree.get(); 
 }
 
-Docs.addDocName = function(docName) {
-  _docNames.push(docName);
+DocsPackage.getDocNames = function() {
+  return _docNames.get(); 
 }
 
-Docs.getDocNames = function() {
-  return _docNames; 
+
+
+if (Meteor.isClient) {
+
+  // Define local variables
+  var _docTree = new ReactiveVar({})
+    , _docNames = new ReactiveVar([]);
+
+  // Fetch server documentation
+  Meteor.call('DocsPackageGetServerDocs', function(err, data) {
+    if (err) throw err;
+    DocsPackage.addDocNames(data.docNames);
+    DocsPackage.addDocTree(data.docTree);
+  });
+} 
+
+
+if (Meteor.isServer) {
+
+  // Simulate reactive-var interface
+  var NonreactiveVar = function(initialValue) {
+    var value = initialValue;
+    this.get = function() { return value; };
+    this.set = function(v) { value = v; return this; };
+  }
+
+  // Define local variables
+  var _docTree = new NonreactiveVar({})
+    , _docNames = new NonreactiveVar([]);
+
+  // Serve server documentation to client  
+  Meteor.methods({
+    'DocsPackageGetServerDocs': function() {
+      return {
+        docNames: DocsPackage.getDocNames(), 
+        docTree: DocsPackage.getDocTree()
+      }
+    }
+  });
 }
+
+

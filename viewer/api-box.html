@@ -46,6 +46,13 @@
     </dl>
   {{/if}}
 
+  {{#if examples}}
+    <h4>Example</h4>
+  {{/if}}
+  {{#each examples}}
+    {{#markdown}}{{{this}}}{{/markdown}}
+  {{/each}}
+
   {{#if UI.contentBlock}}
   {{#markdown}}{{> UI.contentBlock}}{{/markdown}}
   {{/if}}

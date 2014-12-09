@@ -4,7 +4,7 @@ var apiData = function (options) {
     options = {name: options};
   }
 
-  var root = Docs.getDocTree();
+  var root = DocsPackage.getDocTree();
 
   _.each(options.name.split("."), function (pathSegment) {
     root = root[pathSegment];

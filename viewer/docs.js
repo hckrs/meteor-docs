@@ -1,6 +1,7 @@
 
 Router.route('/docs');
 
+
 Router._scrollToHash = function(hash) {
   var $main = $(".main-content")
     , $section = $(hash);
@@ -19,6 +20,6 @@ Template.docs.rendered = function() {
 
 Template.docs.helpers({
   docs: function() {
-    return Docs.getDocNames();
+    return DocsPackage.getDocNames();
   }
 });
