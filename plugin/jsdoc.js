@@ -1,12 +1,7 @@
 var path = Npm.require('path');
-var spawnProc = Npm.require('child_process').fork;
+var jsdoc = Npm.require('jsdoc-meteor');
 var Future = Npm.require('fibers/future');
 
-
-// XXX make sure to activate only at development, 
-// that means, only when starting with "meteor run".
-var cmd = process.argv[2];
-var enable = cmd === 'run'; 
 
 
 // Handle files with .jsdoc extension
@@ -24,23 +19,24 @@ var sourceHandler = function(compileStep) {
     data: compileStep.read().toString('utf8')
   });
 
-  // Add documentation source resulting from jsdoc compilation.
-  // Only when we are on a development machine.
-  if (enable) {
-    var docSource = compileJSDoc(compileStep).wait();
+  // Don't compile documentation if
+  // environment variable DOCS=1 isn't setted. 
+  if (process.env.DOCS != 1) 
+    return;
 
-    if (docSource) {
-      compileStep.addJavaScript({
-        path: path.join(dirName, fileName) + '.doc.js',
-        sourcePath: compileStep.inputPath,
-        data: docSource
-      });  
-    } else {
-      compileStep.error({
-        message: "Failed to compile jsdoc file.",
-        sourcePath: compileStep.inputPath,
-      });
-    }
+  // Add documentation source resulting from jsdoc compilation.
+  var docSource = compileJSDoc(compileStep).wait();
+  if (docSource) {
+    compileStep.addJavaScript({
+      path: path.join(dirName, fileName) + '.doc.js',
+      sourcePath: compileStep.inputPath,
+      data: docSource
+    });  
+  } else {
+    compileStep.error({
+      message: "Failed to compile jsdoc file.",
+      sourcePath: compileStep.inputPath,
+    });
   }
 }
 
@@ -49,25 +45,9 @@ var sourceHandler = function(compileStep) {
 var compileJSDoc = function(compileStep) {
   var future = new Future;
 
-  // XXX TODO smart path
-  var script = 'packages/hckrs\:docs/.npm/plugin/jsdoc/node_modules/jsdoc/jsdoc.js';
-  var args = [ 
-    '-t', "packages/hckrs:docs/plugin/jsdoc-template",
-    '-c', "packages/hckrs:docs/plugin/jsdoc-conf.json",
-    compileStep.fullInputPath
-  ];
-
   // Compile using jsdoc 
-  jsdoc = spawnProc(script, args);
-
-  // Listen for compiled jsdoc data
-  jsdoc.on('error', function(data) {
-    future.return(null);
-  });
-
-  // Listen for compiled jsdoc data
-  jsdoc.on('message', function(data) {
-    future.return(makeDocSource(data));
+  compiler = jsdoc(compileStep.fullInputPath, function(err, data) {
+    future.return(err ? null : makeDocSource(data));
   });
 
   return future;

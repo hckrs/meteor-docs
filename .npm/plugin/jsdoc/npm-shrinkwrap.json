@@ -1,37 +1,42 @@
 {
   "dependencies": {
-    "jsdoc": {
-      "version": "3.3.0-alpha7",
+    "jsdoc-meteor": {
+      "version": "0.1.0",
       "dependencies": {
-        "async": {
-          "version": "0.1.22"
-        },
-        "catharsis": {
-          "version": "0.7.1"
-        },
-        "esprima": {
-          "version": "https://github.com/ariya/esprima/tarball/49a2eccb243f29bd653b11e9419241a9d726af7c"
-        },
-        "js2xmlparser": {
-          "version": "0.1.5"
-        },
-        "marked": {
-          "version": "0.3.2"
-        },
-        "requizzle": {
-          "version": "0.1.1"
-        },
-        "strip-json-comments": {
-          "version": "0.1.3"
-        },
-        "taffydb": {
-          "version": "https://github.com/hegemonic/taffydb/tarball/master"
-        },
-        "underscore": {
-          "version": "1.6.0"
-        },
-        "wrench": {
-          "version": "1.3.9"
+        "jsdoc": {
+          "version": "3.3.0-alpha7",
+          "dependencies": {
+            "async": {
+              "version": "0.1.22"
+            },
+            "catharsis": {
+              "version": "0.7.1"
+            },
+            "esprima": {
+              "version": "https://github.com/ariya/esprima/tarball/49a2eccb243f29bd653b11e9419241a9d726af7c"
+            },
+            "js2xmlparser": {
+              "version": "0.1.7"
+            },
+            "marked": {
+              "version": "0.3.2"
+            },
+            "requizzle": {
+              "version": "0.1.1"
+            },
+            "strip-json-comments": {
+              "version": "0.1.3"
+            },
+            "taffydb": {
+              "version": "https://github.com/hegemonic/taffydb/tarball/master"
+            },
+            "underscore": {
+              "version": "1.6.0"
+            },
+            "wrench": {
+              "version": "1.3.9"
+            }
+          }
         }
       }
     }
