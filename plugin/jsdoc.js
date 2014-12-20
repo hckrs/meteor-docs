@@ -19,11 +19,6 @@ var sourceHandler = function(compileStep) {
     data: compileStep.read().toString('utf8')
   });
 
-  // Don't compile documentation if
-  // environment variable DOCS=1 isn't setted. 
-  if (process.env.DOCS != 1) 
-    return;
-
   // Add documentation source resulting from jsdoc compilation.
   var docSource = compileJSDoc(compileStep).wait();
   if (docSource) {

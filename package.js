@@ -3,15 +3,12 @@
 Package.describe({
   name: 'hckrs:docs',
   summary: 'Live Documentation like Meteor using JSDoc.',
-  version: '0.1.0',
+  version: '0.1.2',
   git: 'https://github.com/hckrs/meteor-docs.git'
 });
 
 
 Package.onUse(function(api) {
-  // Only include this package if 
-  // environment variable DOCS=1 is setted. 
-  if (process.env.DOCS != 1) return;
 
   // General
   api.versionsFrom('1.0');
@@ -23,7 +20,7 @@ Package.onUse(function(api) {
   api.export('DocsPackage');
   
   // Docs viewer (client-side)
-  api.use('iron:router', 'client');
+  api.use('iron:router@1.0.0', 'client');
   api.use('jquery', 'client');
   api.use('templating', 'client');
   api.use('markdown', 'client');
