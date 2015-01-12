@@ -3,7 +3,7 @@
 Package.describe({
   name: 'hckrs:docs',
   summary: 'Live Documentation like Meteor using JSDoc.',
-  version: '0.1.2',
+  version: '0.1.3',
   git: 'https://github.com/hckrs/meteor-docs.git'
 });
 
