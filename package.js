@@ -3,7 +3,7 @@
 Package.describe({
   name: 'hckrs:docs',
   summary: 'Live Documentation like Meteor using JSDoc.',
-  version: '0.1.3',
+  version: '0.1.4',
   git: 'https://github.com/hckrs/meteor-docs.git'
 });
 
@@ -18,7 +18,7 @@ Package.onUse(function(api) {
   api.addFiles('lib/underscore.deepExtend.js');
   api.addFiles('docs.js');
   api.export('DocsPackage');
-  
+
   // Docs viewer (client-side)
   api.use('iron:router@1.0.0', 'client');
   api.use('jquery', 'client');
@@ -32,7 +32,7 @@ Package.onUse(function(api) {
   api.addFiles('viewer/docs.js', 'client');
   api.addFiles('viewer/docs.less', 'client');
   api.addFiles('viewer/tableOfContents.html', 'client');
-  api.addFiles('viewer/tableOfContents.js', 'client');  
+  api.addFiles('viewer/tableOfContents.js', 'client');
 });
 
 // Compile .jsdoc files
