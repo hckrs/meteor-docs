@@ -6,7 +6,7 @@ Router._scrollToHash = function(hash) {
   var $main = $(".main-content")
     , $section = $(hash);
 
-  if ($main.length && $section.length) {
+  if ($main.offset() && $section.offset()) {
     var sectionTop = $section.offset().top;
     $main.animate({
       scrollTop: $main.scrollTop() + sectionTop - $main.offset().top
